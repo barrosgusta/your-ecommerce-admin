@@ -1,7 +1,6 @@
 import prismadb from "@/lib/prismadb"
 import { auth } from "@clerk/nextjs"
 import { NextResponse } from "next/server"
-import { json } from "stream/consumers"
 
 export async function PATCH (
     req: Request,
@@ -51,7 +50,7 @@ export async function DELETE (
         const { userId } = auth()
 
         if (!userId) {
-            return new NextResponse("Unauthorized", { status: 401 })
+            return new NextResponse("Unauthenticated", { status: 401 })
         }
 
         if (!params.storeId) {
