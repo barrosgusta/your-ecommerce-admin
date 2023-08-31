@@ -15,7 +15,7 @@ import { redirect } from "next/navigation"
 
 const formSchema = z.object({
     name: z.string().min(1, {
-        message: "Nome muito curto!"
+        message: "Nome é obrigatório!"
     })
 })
 
