@@ -11,7 +11,7 @@ export async function POST(
 
         const { name } = body
 
-        if (!userId) return new NextResponse("Unauthorized", { status: 401 })
+        if (!userId) return new NextResponse("Unauthenticated", { status: 401 })
 
         if (!name) return new NextResponse("Name is required", { status: 400 })
 
