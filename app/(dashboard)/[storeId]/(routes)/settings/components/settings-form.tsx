@@ -16,21 +16,24 @@ import axios from "axios";
 import { useParams, useRouter } from "next/navigation";
 import { AlertModal } from "@/components/modals/alert-modal";
 import { ApiAlert } from "@/components/ui/api-alert";
+import { useOrigin } from "@/hooks/use-origin";
 
-type SettingsFormProps = {
-    initialData: Store;
-}
 const formSchema = z.object({
     name: z.string().min(1, {
         message: "Nome muito curto!"
     })
 })
 
+type SettingsFormProps = {
+    initialData: Store;
+}
+
 type SettingsFormValues = z.infer<typeof formSchema>
 
-export default function SettigsForm({ initialData }: SettingsFormProps) {
+export default function SettingsForm({ initialData }: SettingsFormProps) {
     const params = useParams()
     const router = useRouter()
+    const origin = useOrigin()
 
     const [open, setOpen] = useState(false)
     const [loading, setLoading] = useState(false)
@@ -118,7 +121,7 @@ export default function SettigsForm({ initialData }: SettingsFormProps) {
             <Separator />
             <ApiAlert
                 title="NEXT_PUBLIC_API_URL"
-                description={`${origin}/api/stores/${params.storeId}`}
+                description={`${origin}/api/${params.storeId}`}
                 variant="public"
             />
         </>
