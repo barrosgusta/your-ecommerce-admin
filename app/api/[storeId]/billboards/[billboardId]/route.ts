@@ -10,7 +10,7 @@ export async function GET(
 ) {
   try {
     if (!params.billboardId) {
-      return new NextResponse("Billboard id is required", { status: 400 });
+      return new NextResponse("Billboard ID is required", { status: 400 });
     }
 
     const billboard = await prismadb.billboard.findUnique({
@@ -38,7 +38,7 @@ export async function DELETE(
     }
 
     if (!params.billboardId) {
-      return new NextResponse("Billboard id is required", { status: 400 });
+      return new NextResponse("Billboard ID is required", { status: 400 });
     }
 
     const storeByUserId = await prismadb.store.findFirst({
@@ -90,7 +90,7 @@ export async function PATCH(
     }
 
     if (!params.billboardId) {
-      return new NextResponse("Billboard id is required", { status: 400 });
+      return new NextResponse("Billboard ID is required", { status: 400 });
     }
 
     const storeByUserId = await prismadb.store.findFirst({
