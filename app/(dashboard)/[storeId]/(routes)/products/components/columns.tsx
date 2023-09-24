@@ -35,7 +35,7 @@ export const columns: ColumnDef<ProductColumn>[] = [
     header: "Destaque",
     cell: ({ row }) => (
       <div className="flex items-center gap-x-2">
-        {row.original.isArchived ? "Sim" : "Não"}
+        {row.original.isFeatured ? "Sim" : "Não"}
       </div>
     )
   },
