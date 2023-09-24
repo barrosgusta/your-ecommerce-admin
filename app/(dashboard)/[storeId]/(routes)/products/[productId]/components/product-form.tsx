@@ -40,7 +40,7 @@ const formSchema = z.object({
     sizeId: z.string().min(1, {
         message: "Tamanho é obrigatório!"
     }),
-    isFeatured: z.boolean().default(false).optional() ,
+    isFeatured: z.boolean().default(false).optional(),
     isArchived: z.boolean().default(false).optional()
 })
 
