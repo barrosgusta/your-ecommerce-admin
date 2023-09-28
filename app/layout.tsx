@@ -11,8 +11,8 @@ import { ThemeProvider } from '@/providers/theme-provider'
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
-  title: "Painel do Usuario",
-  description: "Painel do Usuario"
+  title: 'Painel do Administrador',
+  description: 'Painel do Administrador',
 }
 
 export default function RootLayout({

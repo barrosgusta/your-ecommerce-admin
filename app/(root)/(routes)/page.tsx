@@ -1,77 +1,16 @@
-import getGraphRevenue from "@/actions/get-graph-revenue"
-import getSalesCount from "@/actions/get-sales-count"
-import getStockCount from "@/actions/get-stock-count"
-import getTotalRevenue from "@/actions/get-total-revenue"
-import OverviewChart from "@/components/overview-chart"
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { Heading } from "@/components/ui/heading"
-import { Separator } from "@/components/ui/separator"
-import { formatCurrency } from "@/lib/utils"
-import { CreditCard, DollarSign, Package } from "lucide-react"
+"use client"
 
-export default async function DashboardPage() {
-    const totalRevenue = 0
-    const salesCount = 0
-    const stockCount = 0
-    const graphRevenue = 0 
+import { useStoreModal } from "@/hooks/use-store-modal";
+import { useEffect } from "react";
 
-    return (
-        <div className="flex-col">
-            <div className="flex-1 space-y-4 p-8 pt-6">
-                <Heading title="Dashboard" description="Resumo da sua loja" />
-                <Separator />
-                <div className="grid gap-4 grid-cols-3">
-                    <Card>
-                        <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-                            <CardTitle className="text-sm font-medium">
-                                Receita
-                            </CardTitle>
-                            <DollarSign className="h-4 w-4 text-muted-foreground" />
-                        </CardHeader>
-                        <CardContent>
-                            <div className="text-2xl font-bold">
-                                {formatCurrency(0)}
-                            </div>  
-                        </CardContent>
-                    </Card>
-                    <Card>
-                        <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-                            <CardTitle className="text-sm font-medium">
-                                Vendas
-                            </CardTitle>
-                            <CreditCard className="h-4 w-4 text-muted-foreground" />
-                        </CardHeader>
-                        <CardContent>
-                            <div className="text-2xl font-bold">
-                                +{0}
-                            </div>  
-                        </CardContent>
-                    </Card>
-                    <Card>
-                        <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-                            <CardTitle className="text-sm font-medium">
-                                Anúncios
-                            </CardTitle>
-                            <Package className="h-4 w-4 text-muted-foreground" />
-                        </CardHeader>
-                        <CardContent>
-                            <div className="text-2xl font-bold">
-                                {0}
-                            </div>  
-                        </CardContent>
-                    </Card>
-                </div>
-                <Card className="col-span-4">
-                    <CardHeader className="">
-                        <CardTitle>
-                            Gráfico de Visitas                            
-                        </CardTitle>
-                    </CardHeader>
-                    <CardContent>
-                        <OverviewChart data={[]} />
-                    </CardContent>
-                </Card>
-            </div>
-        </div>
-    )
+export default function SetupPage() {
+  const onOpen = useStoreModal((state) => state.onOpen);
+  const isOpen = useStoreModal((state) => state.isOpen);
+
+  useEffect(() => {
+    !isOpen && onOpen(); 
+  }, [isOpen, onOpen]);
+
+  return null
 }
+  
